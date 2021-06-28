@@ -1,0 +1,70 @@
+Data Types and their sizes 
+Size of Int : 4
+Size of long : 4
+Size of float : 4
+Size of char : 1
+Size of short : 2
+Size of bool : 1
+
+
+while loop check the condition first and then excecute the body of loop 
+do while loop excecute the body at first time and then check the condition
+
+contine statement is used to skip the iteration
+break statement is used to terminate loop
+
+in i++ the value of i is used first and then  incrementated
+and in ++i value of i is used after incrementated
+
+AND Operator & 
+OR |
+XOR ^
+one's compliment ~
+left shift Operator <<
+right shift Operator >>
+
+a +=b => a= a+b;
+a -=b => a = a-b;
+a *=b => a = a*b;
+a /=b => a = a/b;
+
+
+Miscellaneous Operator
+
+sixeof
+condition ? x:y  => if condition id true then x if not true then y
+cast => convert one data type to another data type 
+comma(,) => seq of operations to be performed
+& => returns address of variable
+* => pointer to a variable
+
+
+
+Time Complexity
+for eg 
+for(i=0;i<=n;i++)
+{
+    statement
+}
+
+In this statement time Complexity is proportional to n 
+
+
+for(i=0;i<=n;i++)
+{
+    for(i=0;i<=n;i++)
+{
+    statement
+}
+}
+while in the above statement time Complexity is n^2
+
+O(logn)<O(sqrt(n))<O(n)<O(n^2)<O(n^3)
+
+Space Complexity
+dpeneds on Number of Variables 
+
+
+Worst Case(Big Oh) notation =>proportional to n
+Best Case (Big Omega) notation =>constant
+Averge case (Big theta) Notation => proportional to n {(n+1)/2}
