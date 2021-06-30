@@ -10,7 +10,7 @@ int main(){
     {
         for (int j = 0; j < m; j++)
         {
-            cin>>arr[n][m];
+            cin>>arr[i][j];
         }
         
     }
