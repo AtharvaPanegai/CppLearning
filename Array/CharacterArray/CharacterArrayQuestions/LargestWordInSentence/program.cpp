@@ -25,6 +25,7 @@ int main()
             }
             currentLength=0;
         }
+        else
         currentLength++;
         if (arr[i] != '\0')
         {
