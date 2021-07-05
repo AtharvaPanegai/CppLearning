@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
 
-    string s = "bhsvdkskrfkvbskjdvb";
+    string s = "bhsvdkskrfkvbskjdvbaaaaaaaa";
     int freq[26];
     for (int i = 0; i < 26; i++)
     {
@@ -16,11 +16,11 @@ int main(){
         freq[s[i]-'a']++;
     }
     int maxFreq = -1;
-    int maxChar = 'a';
+    string maxChar = "a";
 
     for (int i = 0; i < 26; i++)
     {
-        if(freq[i]>maxFreq){
+        if(freq[i]>=maxFreq){
             maxFreq = freq[i];
             maxChar = i+'a';
         }
