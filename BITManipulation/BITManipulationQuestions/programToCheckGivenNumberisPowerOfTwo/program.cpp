@@ -1,7 +1,14 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main(){
+bool isPowerOfTwo(int n)
+{
+    return (n && !(n & n - 1));
+}
+
+int main()
+{
+    cout<<isPowerOfTwo(4);
 
     return 0;
 }
