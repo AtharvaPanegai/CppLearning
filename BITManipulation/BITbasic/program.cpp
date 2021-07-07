@@ -28,8 +28,8 @@ int main()
 {
 
     // cout << clearBit(5, 2);
-    cout << updateBit(5, 1, 1);
+    // cout << updateBit(5, 1, 1);
     // cout<<setBit(5,1);
-    // cout<<getBit(5,2);
+    cout<<getBit(5,2);
     return 0;
 }
