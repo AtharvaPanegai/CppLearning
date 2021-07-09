@@ -4,7 +4,7 @@ using namespace std;
 int main(){ 
 
     string s1 = "AtharvaPanegai";
-    cout<<s1.substr(0,6);
+    cout<<s1.substr(2);
 
     return 0;
 } 
