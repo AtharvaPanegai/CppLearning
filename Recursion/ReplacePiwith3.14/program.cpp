@@ -10,6 +10,7 @@ void replacePi(string s){
     }
     if(s[0]=='p' && s[1]=='i'){
         cout<<"3.14"<<" ";
+        // removing first two char 
         replacePi(s.substr(2));
     }
     else{
