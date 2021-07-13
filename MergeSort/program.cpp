@@ -1,7 +1,7 @@
 #include "bits/stdc++.h"
 using namespace std;
 
-void merge(int arr[], int l, int mid, int r)
+void mergeFunction(int arr[], int l, int mid, int r)
 {
     // size of temp array
     int n1 = mid - l + 1;
@@ -56,7 +56,7 @@ void mergeSort(int arr[], int l, int r)
         mergeSort(arr, l, mid);
         mergeSort(arr, mid + 1, r);
 
-        merge(arr, l, mid, r);
+        mergeFunction(arr, l, mid, r);
     }
 }
 
