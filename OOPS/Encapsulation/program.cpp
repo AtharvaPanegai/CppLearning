@@ -1,6 +1,7 @@
 #include "bits/stdc++.h"
 using namespace std;
 
+// here we've restricted the direct access to the private functions this enCapsulation
 class A
 {
 public:
