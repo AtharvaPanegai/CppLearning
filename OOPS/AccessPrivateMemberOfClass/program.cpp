@@ -3,8 +3,9 @@ using namespace std;
 
 class student
 {
-public:
     string name;
+
+public:
     int age;
     bool gender;
 
@@ -17,23 +18,31 @@ public:
         cout << "Gender : ";
         cout << gender << endl;
     }
+
+    void setName(string s)
+    {
+        name = s;
+    }
+
+    void getName(){
+        cout<<name;
+    }
 };
 
 int main()
 {
 
-    student a;
-    a.name = "Atharva";
-    a.age = 20;
-    a.gender = false;
     // instead of adding one by one we can make an array
     student arr[3];
     for (int i = 0; i < 3; i++)
     {
+
         cout << "input age";
         cin >> arr[i].age;
         cout << "input name";
-        cin >> arr[i].name;
+        string s;
+        cin >> s;
+        arr[i].setName(s);
         cout << "input gender";
         cin >> arr[i].gender;
     }
@@ -42,6 +51,8 @@ int main()
     {
         arr[i].printInfo();
     }
+
+    // To access private member of class we make a function
 
     return 0;
 }
