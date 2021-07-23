@@ -6,17 +6,35 @@ class student
 public:
     string name;
     int age;
-    bool gender; 
+    bool gender;
     student()
     {
         cout << "This is Default Constructor";
     } // Default Constructor
     student(string s, int a, bool g)
     {
+        cout << "This is Parameterised constructor"
+             << "\n";
         name = s;
         age = a;
         gender = g;
     } // Parameterised constructor
+
+    student(student &a)
+    {
+        cout << "Copy Constructor"
+             << "\n";
+        name = a.name;
+        age = a.age;
+        gender = a.gender;
+    } // copy constructor
+
+    // destructor
+    ~student()
+    {
+        cout << "Destructor is called"
+             << "\n";
+    }
 
     void printInfo()
     {
@@ -36,6 +54,14 @@ public:
     void getName()
     {
         cout << name;
+    }
+    bool operator==(student &a)
+    {
+        if (name == a.name && age == a.age && gender == a.gender)
+        {
+            return true;
+        }
+        return false;
     }
 };
 
@@ -58,8 +84,16 @@ int main()
     // ---- Now accessing the constructor
     student a("Atharva", 10, 1);
     student b;
-    a.printInfo();
-    a.getName();
+    student c = a;
+
+    if (c == a)
+    {
+        cout << "Same" << endl;
+    }
+    else
+    {
+        cout << "Not same";
+    }
 
     return 0;
 }
