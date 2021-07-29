@@ -1,64 +1,60 @@
 #include "bits/stdc++.h"
 using namespace std;
 
-class node
-{
-public:
+class node{
+    public: 
     int data;
     node *next;
 
-    node(int val)
-    {
+    node(int val){
         data = val;
         next = NULL;
+
     }
 };
 
 void insertAtHead(node *&head,int val){
+    // new node creation
     node *n = new node(val);
     n->next = head;
     head = n;
 
 }
 
-
-void insertAtTail(node *&head, int val)
-{
+void insertAtTail(node *&head,int val){
+    // create a new node
     node *n = new node(val);
 
-    // check if the LL is Empty
+    // check if the LL is empty
 
-    if (head == NULL)
-    {
+    if(head == NULL){
         head = n;
         return;
     }
 
-    // transverse
+    // LL is not empty
+
     node *temp = head;
-    while (temp->next != NULL)
-    {
+    while(temp->next !=NULL){
         temp = temp->next;
     }
-    // now we reached the end of LL
+    // now we've reached at the end of LL
     temp->next = n;
 }
 
-void displayLL(node *head)
-{
-    node *temp = head;
-    while (temp != NULL)
-    {
-        cout << temp->data << "->";
-        temp = temp->next;
-    }
-    cout<<"NULL"<<endl;
-}
-
-bool search(node* &head,int key){
+void display(node *&head){
     node *temp = head;
     while(temp!=NULL){
-        if(temp->data == key){
+        cout<<temp->data<<"->";
+        temp = temp->next;
+    }
+    cout<<"NULL";
+}
+
+bool searchLL(node *&head,int key){
+    node *temp = head;
+    while(temp->next!=NULL){
+        if(temp->data==key){
             return true;
         }
         temp = temp->next;
@@ -66,18 +62,20 @@ bool search(node* &head,int key){
     return false;
 }
 
-int main()
-{
-    node* head =NULL;
-    insertAtTail(head,1);
-    insertAtTail(head,2);
+int main(){
+
+    node *head = NULL;
     insertAtTail(head,3);
-    insertAtTail(head,4);
-    insertAtHead(head,12); 
-    cout<<search(head,3)<<endl;
+    insertAtTail(head,3);
+    insertAtTail(head,3);
+    insertAtTail(head,3);
+    insertAtTail(head,3);
 
-    displayLL(head);
+    insertAtHead(head,12345);
+    
+    cout<<searchLL(head,3)<<"\n";
 
+    display(head);
 
     return 0;
 }
