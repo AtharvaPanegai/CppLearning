@@ -46,8 +46,8 @@ Node *buildTree(int inOrder[], int postOrder[], int start, int end)
         return root;
     }
     int pos = searchFunction(inOrder, start, end, curr);
-    root->right = buildTree(inOrder, postOrder, pos + 1, end);
     root->left = buildTree(inOrder, postOrder, start, pos - 1);
+    root->right = buildTree(inOrder, postOrder, pos + 1, end);
 
     return root;
 }

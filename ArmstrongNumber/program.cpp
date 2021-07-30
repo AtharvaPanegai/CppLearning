@@ -3,7 +3,7 @@ using namespace std;
 
 int main(){
     int n;
-    int rem;
+    int remaining;
     int part=0;
     cout<<"Enter the Number to check ";
     cin>>n;
@@ -11,8 +11,8 @@ int main(){
 
     while (n>0)
     {
-        rem =n%10;
-        part=(rem*rem*rem)+part;
+        remaining =n%10;
+        part=(remaining*remaining*remaining)+part;
         n/=10;
     }
     if (part==originaln)
