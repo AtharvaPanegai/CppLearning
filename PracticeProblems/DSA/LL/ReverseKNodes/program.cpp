@@ -79,7 +79,7 @@ int main()
     display(head);
 
     int k = 2;
-    node *newhead = reverseK(head,k);
+    node *newhead = reverseK(head, k);
     display(newhead);
 
     return 0;

@@ -48,12 +48,14 @@ void display(node *&head)
     cout << "NULL";
 }
 
-node *reverseUsingIterator(node *&head){
+node *reverseUsingIterator(node *&head)
+{
     node *prevptr = NULL;
     node *currptr = head;
     node *nextptr;
 
-    while(currptr!=NULL){
+    while (currptr != NULL)
+    {
         nextptr = currptr->next;
         currptr->next = prevptr;
 
@@ -62,11 +64,11 @@ node *reverseUsingIterator(node *&head){
     }
 
     return prevptr;
-
 }
 
-node *reverseRecursiveWay(node *&head){
-    node* newHead = reverseRecursiveWay(head->next);
+node *reverseRecursiveWay(node *&head)
+{
+    node *newHead = reverseRecursiveWay(head->next);
     head->next->next = head;
     head->next = NULL;
 
@@ -76,15 +78,14 @@ node *reverseRecursiveWay(node *&head){
 int main()
 {
     node *head = NULL;
-    insertAtTail(head,1);
-    insertAtTail(head,2);
-    insertAtTail(head,3);
-    insertAtTail(head,4);
-    
+    insertAtTail(head, 1);
+    insertAtTail(head, 2);
+    insertAtTail(head, 3);
+    insertAtTail(head, 4);
 
     display(head);
 
-    node *newHead=reverseUsingIterator(head);
+    node *newHead = reverseUsingIterator(head);
 
     display(newHead);
 
