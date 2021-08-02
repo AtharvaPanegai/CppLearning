@@ -155,6 +155,13 @@ node *KAppend(node *&head, int k)
     return newHead;
 }
 
+
+
+
+
+
+
+
 int main()
 {
     node *head = NULL;
