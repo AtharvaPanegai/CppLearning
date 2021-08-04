@@ -1,30 +1,37 @@
-#include<iostream>
-#include<conio.h>
+#include <iostream>
 using namespace std;
+
+class FactSeries
+{
+public:
+    int factorialNumber(int num)
+    {
+
+        int factorial = 1;
+        for (int i = 2; i <= num; i++)
+        {
+            factorial *= i;
+        }
+        return factorial;
+    }
+};
 
 int main()
 {
-    int n,a,countBefore=0,countAfter=0;
-    float x;
+    FactSeries f;
+    int n;
+    int sum = 0;
+    cout << "Enter the number of terms : ";
+    cin >> n;
+    int count = 0;
+    int i=1;
 
-    cout<<"Enter the number : ";
-    scanf("%f",&x);
-
-    n=(int)x;
-    x=x-n;
-
-    while(n!=0)
-    {
-        n=n/10;
-        countBefore++;
+    while(n!=count){
+        sum +=f.factorialNumber(i);
+        cout<<sum<<"\n";
+        i+=2;
+        count++;
     }
-    while(x!=0)
-    {
-        x=x*10;
-        n=(int)x;
-        x=x-n;
-        countAfter++;
-    }
-    cout<<"No. of digits before decimal point are : "<<countBefore<<endl;
-    cout<<"No. of digits after decimal point are : "<<countAfter<<endl;
+
+    cout << "The sum of series is " << sum;
 }
