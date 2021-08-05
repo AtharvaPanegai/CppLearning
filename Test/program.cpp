@@ -24,12 +24,13 @@ int main()
     cout << "Enter the number of terms : ";
     cin >> n;
     int count = 0;
-    int i=1;
+    int i = 1;
 
-    while(n!=count){
-        sum +=f.factorialNumber(i);
-        cout<<sum<<"\n";
-        i+=2;
+    while (n != count)
+    {
+        sum += f.factorialNumber(i);
+        cout << sum << "\n";
+        i += 2;
         count++;
     }
 
