@@ -1,4 +1,4 @@
-// ReWatch
+// here we've to append last k nodes
 
 #include "bits/stdc++.h"
 using namespace std;
@@ -58,52 +58,31 @@ int lengthOfLL(node *&head)
     return l;
 }
 
-int interSection(node *&head1, node *&head2)
+node *KAppend(node *&head, int k)
 {
-    int l1 = lengthOfLL(head1);
-    int l2 = lengthOfLL(head2);
+    node *newHead;
+    node *newTail;
+    node *tail = head;
+    int l = lengthOfLL(head);
+    int count = 1;
 
-    // diff
-    int d = 0;
-    node *ptr1; //will poiint to the bigger LL
-    node *ptr2; // will point to the smaller LL
-
-    if (l1 < l2)
+    while (tail->next != NULL)
     {
-        d = l2 - l1;
-        ptr1 = head1;
-        ptr2 = head2;
-    }
-    else
-    {
-        d = l1 - l2;
-        ptr1 = head2;
-        ptr2 = head1;
-    }
-
-    while (d)
-    {
-        // move the pointer to the equivalent position as of ptr2
-        ptr1 = ptr1->next;
-        if (ptr1 == NULL)
+        if (count == l - k)
         {
-            return -1;
+            newTail = tail;
         }
-        d--;
-    }
-
-    while (ptr1 != NULL && ptr2 != NULL)
-    {
-        if (ptr1 == ptr2)
+        if (count == l - k + 1)
         {
-            return ptr1->data;
+            newHead = tail;
         }
-
-        ptr1 = ptr1->next;
-        ptr2 = ptr2->next;
+        tail = tail->next;
+        count++;
     }
+    newTail->next = NULL;
+    tail->next = head;
 
-    return -1;
+    return newHead;
 }
 
 int main()
@@ -116,6 +95,9 @@ int main()
     }
 
     display(head);
+
+    node *newHead = KAppend(head,3);
+    display(newHead);
 
     return 0;
 }
