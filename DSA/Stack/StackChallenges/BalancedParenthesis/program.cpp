@@ -3,7 +3,7 @@ using namespace std;
 
 bool isValid(string s)
 {
-    int n = s.length();
+    int n = s.size();
     stack<char> st;
     bool ans = true;
     for (int i = 0; i < n; i++)
@@ -12,9 +12,9 @@ bool isValid(string s)
         {
             st.push(s[i]);
         }
-        else if (!st.empty() && s[i] == ')')
+        else if (s[i] == ')')
         {
-            if (st.top() == ')')
+            if (!st.empty() && st.top() == '(')
             {
                 st.pop();
             }
@@ -24,9 +24,9 @@ bool isValid(string s)
                 break;
             }
         }
-        else if (!st.empty() && s[i] == ']')
+        else if (s[i] == ']')
         {
-            if (st.top() == ']')
+            if (!st.empty() && st.top() == '[')
             {
                 st.pop();
             }
@@ -36,9 +36,9 @@ bool isValid(string s)
                 break;
             }
         }
-        else if (!st.empty() && s[i] == '}')
+        else if (s[i] == '}')
         {
-            if (st.top() == '}')
+            if (!st.empty() && st.top() == '{')
             {
                 st.pop();
             }
@@ -49,7 +49,7 @@ bool isValid(string s)
             }
         }
     }
-    if(st.empty()){
+    if(!st.empty()){
         return false;
     }
     return ans;
@@ -57,7 +57,7 @@ bool isValid(string s)
 
 int main()
 {
-    string s = "{([])}";
+    string s = "{[()]}";
     cout<<isValid(s);
 
     return 0;
