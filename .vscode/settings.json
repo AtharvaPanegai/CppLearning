@@ -1,7 +1,9 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "array": "cpp",
+        "regex": "cpp"
     },
     "editor.fontSize": 16,
     "editor.fontLigatures": null
