@@ -16,7 +16,6 @@ public:
 
 class myQueue
 {
-    public:
     node *front;
     node *back;
 
@@ -31,8 +30,8 @@ class myQueue
         node *n = new node(x);
         if (front == NULL)
         {
-            back = n;
             front = n;
+            back = n;
             return;
         }
         back->next = n;
@@ -43,13 +42,11 @@ class myQueue
     {
         if (front == NULL)
         {
-            cout << "queue is underFlow\n";
+            cout << "Nothing to POP\n";
             return;
         }
-
         node *toDelete = front;
         front = front->next;
-
         delete toDelete;
     }
 
@@ -57,8 +54,7 @@ class myQueue
     {
         if (front == NULL)
         {
-            cout << "Queue is NL"
-                 << "\n";
+            cout << "Nothing to peek\n";
             return -1;
         }
         return front->data;
@@ -68,6 +64,7 @@ class myQueue
     {
         if (front == NULL)
         {
+            cout << "Nothing to POP\n";
             return true;
         }
         return false;
@@ -76,14 +73,6 @@ class myQueue
 
 int main()
 {
-    myQueue q;
-    q.push(1);
-    q.push(7);
-    q.push(324);
-    cout<<q.peek()<<"\n";
-    q.pop();
-    cout<<q.peek()<<"\n"; 
-    q.push(245);
-    q.push(2);
+
     return 0;
 }
