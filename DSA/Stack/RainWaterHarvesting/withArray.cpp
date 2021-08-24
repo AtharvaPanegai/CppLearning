@@ -36,4 +36,4 @@ int main()
     cout<<waterSaved(arr);
 
     return 0;
-}
+} 
