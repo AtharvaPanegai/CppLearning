@@ -15,7 +15,7 @@ int main()
         }
         dict[s[i]] = i;
         maxLength = max(maxLength, i - start);
-        ;
+        
     }
     cout << maxLength;
 
