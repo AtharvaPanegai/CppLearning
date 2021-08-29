@@ -3,7 +3,8 @@
         "iostream": "cpp",
         "*.tcc": "cpp",
         "array": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "new": "cpp"
     },
     "editor.fontLigatures": null
 }
