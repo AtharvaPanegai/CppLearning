@@ -15,6 +15,7 @@ struct Node
     }
 };
 
+// Time Complexity of function = O(n)
 int calculateHeight(Node *root)
 {
     if (root == NULL)
