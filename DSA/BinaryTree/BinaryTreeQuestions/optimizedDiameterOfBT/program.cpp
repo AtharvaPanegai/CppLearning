@@ -7,7 +7,6 @@ struct Node
     struct Node *left;
     struct Node *right;
 
-    // constructor
     Node(int val)
     {
         data = val;
@@ -16,39 +15,29 @@ struct Node
     }
 };
 
-int calcHeight(Node *root)
+// O(n)
+
+int calcDiameter(Node *root, int *Height)
 {
+
     if (root == NULL)
     {
+        *Height = 0;
         return 0;
     }
+    int lh = 0, rh = 0;
 
-    return max(calcHeight(root->left), calcHeight(root->right)) + 1;
-}
+    int lDiameter = calcDiameter(root->left, &lh);
+    int rDiameter = calcDiameter(root->right, &rh);
 
-// O(n2)
-
-int calculateDiameter(Node *root)
-{
-    if (root == NULL)
-    {
-        return 0;
-    }
-
-    int lHeight = calcHeight(root->left);
-    int rHeight = calcHeight(root->right);
-
-    int currDiameter = lHeight + rHeight + 1;
-
-    int lDiameter = calculateDiameter(root->left);
-    int rDiameter = calculateDiameter(root->right);
+    int currDiameter = lh + rh + 1;
+    *Height = max(lh, rh) + 1;
 
     return max(currDiameter, max(lDiameter, rDiameter));
 }
 
 int main()
 {
-
     struct Node *root = new Node(1);
     root->left = new Node(2);
     root->left->left = new Node(4);
@@ -56,8 +45,8 @@ int main()
     root->right = new Node(3);
     root->right->left = new Node(6);
     root->right->right = new Node(6);
+    int height = 0;
 
-    cout<<calculateDiameter(root);
-
+    cout << calcDiameter(root, &height) << "\n";
     return 0;
 }
