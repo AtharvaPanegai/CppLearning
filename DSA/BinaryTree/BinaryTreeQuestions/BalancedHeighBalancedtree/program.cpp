@@ -28,6 +28,7 @@ int heightOfTree(Node *root)
     return max(lh, rh);
 }
 
+// Time Complexity  => O(n2)
 bool balancedHeightTree(Node *root)
 {
     if (root == NULL)
@@ -46,6 +47,38 @@ bool balancedHeightTree(Node *root)
 
     int lh = heightOfTree(root->left);
     int rh = heightOfTree(root->right);
+
+    if (abs(lh - rh) <= 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+
+// Time complexity = O(n)
+bool balancedHeightTreeOptimized(Node *root, int *height)
+{
+    // base condition
+    if (root == NULL)
+    {
+        return false;
+    }
+    int lh = 0, rh = 0;
+    if (balancedHeightTreeOptimized(root->left, &lh) == false)
+    {
+        return false;
+    }
+    if (balancedHeightTreeOptimized(root->right, &rh) == false)
+    {
+        return false;
+    }
+
+    *height = max(lh, rh) + 1;
 
     if (abs(lh - rh) <= 1)
     {
