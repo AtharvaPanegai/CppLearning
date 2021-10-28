@@ -18,18 +18,18 @@ struct Node
 
 void sumReplace(Node *root)
 {
-    if (root == NULL)
-    {
+    if(root==NULL){
         return;
     }
+    // calc left and then right
     sumReplace(root->left);
     sumReplace(root->right);
 
-    if (root->left != NULL)
+    if (root->left)
     {
         root->data += root->left->data;
     }
-    if (root->right != NULL)
+    if (root->right)
     {
         root->data += root->right->data;
     }
@@ -57,7 +57,7 @@ int main()
     root->right->right = new Node(7);
     preOrder(root);
     sumReplace(root);
-    cout<<"After Sum Replacement\n";
+    cout << "After Sum Replacement\n";
     preOrder(root);
     return 0;
 }
