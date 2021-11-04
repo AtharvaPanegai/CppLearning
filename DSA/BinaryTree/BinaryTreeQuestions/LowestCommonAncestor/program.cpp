@@ -60,6 +60,31 @@ int LCA(Node *root, int n1, int n2)
     return path1[pc - 1];
 }
 
+Node *LCA2(Node *root, int n1, int n2)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    if (root->data == n1 || root->data == n2)
+    {
+        return root;
+    }
+
+    Node *leftLCA = LCA2(root->left, n1, n2);
+    Node *rightLCA = LCA2(root->right, n1, n2);
+
+    if (leftLCA && rightLCA)
+    {
+        return root;
+    }
+    if (leftLCA != NULL)
+    {
+        return leftLCA;
+    }
+    return rightLCA;
+}
+
 int main()
 {
     struct Node *root = new Node(1);
@@ -72,7 +97,8 @@ int main()
 
     int n1 = 7;
     int n2 = 6;
-    cout << LCA(root, n1, n2);
+    Node *lca = LCA2(root, n1, n2);
 
+    cout << lca->data << "\n";
     return 0;
 }
