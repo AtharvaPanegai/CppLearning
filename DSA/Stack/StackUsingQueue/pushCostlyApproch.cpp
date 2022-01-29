@@ -3,67 +3,46 @@ using namespace std;
 
 class Stack
 {
-    int N; //size
+    int N; // size of the stack
     queue<int> q1;
     queue<int> q2;
 
-public:
+    // constructor
     Stack()
     {
         N = 0;
     }
 
-    void push(int val)
+    void push(int x)
     {
-        q2.push(val);
+        q2.push(x);
+        // increasing the size of stack so that if asked we can return it
         N++;
+        // now transfer all the elements from q1 to q2
         while (!q1.empty())
         {
             q2.push(q1.front());
             q1.pop();
         }
-        queue<int> temp = q1;
+        // now swap both the queues
+        queue<int> temp = q2;
         q1 = q2;
         q2 = temp;
     }
 
     void pop()
     {
-        q1.pop();
-        N--;
-    }
-
-    int top()
-    {
-        return q1.front();
-    }
-
-    int size()
-    {
-
-        return N;
-    }
-
-    bool empty()
-    {
-        if (N != 0)
+        if (q1.empty())
         {
-            return false;
+            cout << "Queue is empty\n";
+            return;
         }
-        return true;
+        q1.pop();
     }
 };
 
 int main()
 {
-    Stack st;
-    st.push(1);
-    st.push(123);
-    st.push(67);
-    st.push(3);
 
-    cout << st.top() << "\n";
-    st.pop();
-    cout << st.top() << "\n";
     return 0;
 }

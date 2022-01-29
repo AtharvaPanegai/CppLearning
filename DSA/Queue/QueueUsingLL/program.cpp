@@ -1,12 +1,15 @@
+// queue using LinkedList
 #include "bits/stdc++.h"
 using namespace std;
 
+// first create node
 class node
 {
 public:
     int data;
     node *next;
 
+    // node constructor
     node(int val)
     {
         data = val;
@@ -14,76 +17,74 @@ public:
     }
 };
 
+// class for queue
 class myQueue
 {
-    public:
+public:
+    // front and back pointers
     node *front;
     node *back;
 
+    // queue constructor
     myQueue()
     {
         front = NULL;
         back = NULL;
     }
 
-    void push(int x)
+    // all the functions
+    void enQueue(int x)
     {
-        node *n = new node(x);
+        // create a new node
+        node *newNode = new node(x);
+        // check if the queue is empty
+        // if it's empty then push front and back to newNode
         if (front == NULL)
         {
-            back = n;
-            front = n;
+            front = newNode;
+            back = newNode;
             return;
         }
-        back->next = n;
-        back = n;
+        // if it's not the first node
+        back->next = newNode;
+        back = newNode;
     }
 
-    void pop()
+    void deQeue()
     {
+        // check if the Queue is empty or not
         if (front == NULL)
         {
-            cout << "queue is underFlow\n";
+            cout << "Queue is empty\n";
             return;
         }
-
-        node *toDelete = front;
-        front = front->next;
-
-        delete toDelete;
+        // if its not empty then
+        // store the node and delete it
+        node *nodeTobeDeleted = front;
+        front++;
+        delete nodeTobeDeleted;
     }
 
+    // the data at the tip of Queue
     int peek()
     {
         if (front == NULL)
         {
-            cout << "Queue is NL"
-                 << "\n";
+            cout << "Queue is Empty\n";
             return -1;
         }
         return front->data;
     }
 
+    // check if the queue is empty or not
     bool empty()
     {
-        if (front == NULL)
-        {
-            return true;
-        }
-        return false;
+        return (front == NULL);
     }
 };
 
 int main()
 {
-    myQueue q;
-    q.push(1);
-    q.push(7);
-    q.push(324);
-    cout<<q.peek()<<"\n";
-    q.pop();
-    cout<<q.peek()<<"\n"; 
-    q.push(245);
-    q.push(2);
+
     return 0;
 }

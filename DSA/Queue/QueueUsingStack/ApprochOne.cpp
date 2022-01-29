@@ -3,23 +3,25 @@ using namespace std;
 
 class myQueue
 {
+    // s1 is the main stack
     stack<int> s1;
+    // stack s2 is used while delete element
     stack<int> s2;
 
-public:
-    void push(int x)
+    void enQueue(int x)
     {
         s1.push(x);
     }
 
-    int pop()
+    void deQueue()
     {
-        if (s1.empty() and s2.empty())
+        // check if both the stacks are empty
+        if (s1.empty() && s2.empty())
         {
-            cout << "Queue is empty\n";
-            return -1;
+            cout << "Queue is empty";
+            return;
         }
-
+        // if s2 is empty
         if (s2.empty())
         {
             while (!s1.empty())
@@ -28,33 +30,38 @@ public:
                 s1.pop();
             }
         }
-
-        int topVal = s2.top();
+        cout << s2.top() << "  Deleted";
         s2.pop();
-        return topVal;
+    }
+
+    int peek()
+    {
+        // check if both the stacks are empty
+        if (s1.empty() && s2.empty())
+        {
+            cout << "Queue is empty";
+            return -1;
+        }
+        // if s2 is empty
+        if (s2.empty())
+        {
+            while (!s1.empty())
+            {
+                s2.push(s1.top());
+                s1.pop();
+            }
+        }
+        return s2.top();
     }
 
     bool empty()
     {
-        if (s1.empty() and s2.empty())
-        {
-            return true;
-        }
-        return false;
+        return (s1.empty() && s2.empty());
     }
 };
 
 int main()
 {
-    myQueue q;
-    q.push(1);
-    cout << q.pop()<<"\n";
-    q.push(2);
-    q.push(3);
 
-    cout << q.pop()<<"\n";
     return 0;
 }
-
-// push => O(1);
-// pop => O(n);
