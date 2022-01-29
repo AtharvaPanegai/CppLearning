@@ -1,49 +1,55 @@
 #include "bits/stdc++.h"
 using namespace std;
 
-void insertAtBottom(stack<int> &st,int ele){
-
-    if(st.empty()){
+void insertAtBottom(stack<int> &st, int ele)
+{
+    if (st.empty())
+    {
         st.push(ele);
         return;
     }
-
-
     int topEle = st.top();
     st.pop();
-    insertAtBottom(st,ele);
+    insertAtBottom(st, ele);
 
     st.push(topEle);
 }
 
-void reverseFunction(stack<int> &st){
-
-    if(st.empty()){
+void reverseStack(stack<int> &st)
+{
+    // base condition
+    if (st.empty())
+    {
         return;
     }
 
+    // store the top value in a variable
     int ele = st.top();
     st.pop();
-    reverseFunction(st);
-    insertAtBottom(st,ele);
+    reverseStack(st);
+    // call the insert at Bottom Function
+    insertAtBottom(st, ele);
+}
+
+void printStack(stack<int> st)
+{
+    while (!st.empty())
+    {
+        cout << st.top();
+        st.pop();
+    }
 }
 
 int main()
 {
     stack<int> st;
     st.push(1);
-    st.push(2);
-    st.push(3);
     st.push(4);
-    st.push(5);
+    st.push(2);
     st.push(6);
 
-    reverseFunction(st);
+    reverseStack(st);
 
-    while(!st.empty()){
-        cout<<st.top()<<endl;
-        st.pop();
-    }cout<<"\n";
-
+    printStack(st);
     return 0;
 }

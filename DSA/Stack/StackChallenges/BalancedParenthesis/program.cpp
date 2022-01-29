@@ -3,12 +3,11 @@ using namespace std;
 
 bool isValid(string s)
 {
-    int n = s.size();
     stack<char> st;
     bool ans = true;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < s.length(); i++)
     {
-        if (s[i] == '{' || s[i] == '[' || s[i] == '(')
+        if (s[i] == '(' || s[i] == '[' || s[i] == '{')
         {
             st.push(s[i]);
         }
@@ -49,16 +48,13 @@ bool isValid(string s)
             }
         }
     }
-    if(!st.empty()){
-        return false;
-    }
+
     return ans;
 }
 
 int main()
 {
-    string s = "{[()]}";
-    cout<<isValid(s);
-
+    string s = "{([(])}";
+    cout << isValid(s);
     return 0;
 }
