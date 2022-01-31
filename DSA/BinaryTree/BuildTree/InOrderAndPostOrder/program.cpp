@@ -16,9 +16,9 @@ struct Node
     }
 };
 
-int searchFunction(int inOrder[], int start, int end, int curr)
+int searchInInOrder(int inOrder[], int start, int end, int curr)
 {
-    for (int i = start; i <= end; i++)
+    for (int i = 0; i < end; i++)
     {
         if (inOrder[i] == curr)
         {
@@ -38,14 +38,14 @@ Node *buildTree(int inOrder[], int postOrder[], int start, int end)
     }
     int curr = postOrder[idx];
     idx--;
-    // new root node creation
     Node *root = new Node(curr);
 
     if (start == end)
     {
         return root;
     }
-    int pos = searchFunction(inOrder, start, end, curr);
+    int pos = searchInInOrder(inOrder, start, end, curr);
+
     root->left = buildTree(inOrder, postOrder, start, pos - 1);
     root->right = buildTree(inOrder, postOrder, pos + 1, end);
 
@@ -54,7 +54,8 @@ Node *buildTree(int inOrder[], int postOrder[], int start, int end)
 
 void printPostOrder(Node *root)
 {
-    if(root==NULL){
+    if (root == NULL)
+    {
         return;
     }
     printPostOrder(root->left);
@@ -67,7 +68,9 @@ int main()
     int postOrder[] = {4, 2, 5, 3, 1};
     int inOrder[] = {4, 2, 1, 5, 3};
 
-    struct Node *root = buildTree(inOrder,postOrder,0,4);
+   struct Node *root = buildTree(inOrder, postOrder, 0, 4);
+
     printPostOrder(root);
+
     return 0;
 }

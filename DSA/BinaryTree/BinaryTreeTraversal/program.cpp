@@ -4,8 +4,8 @@ using namespace std;
 struct Node
 {
     int data;
-    struct Node *left;
-    struct Node *right;
+    Node *left;
+    Node *right;
 
     // constructor
     Node(int val)
@@ -16,7 +16,18 @@ struct Node
     }
 };
 
-void preOrder(struct Node *root)
+void inOrderTraversal(Node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    inOrderTraversal(root->left);
+    cout << root->data << " ";
+    inOrderTraversal(root->right);
+}
+
+void preOrder(Node *root)
 {
     if (root == NULL)
     {
@@ -27,28 +38,15 @@ void preOrder(struct Node *root)
     preOrder(root->right);
 }
 
-void postOrderTraversal(struct Node *root)
+void postOrder(Node *root)
 {
-    if (root = NULL)
+    if (root == NULL)
     {
         return;
     }
-
-    postOrderTraversal(root->left);
-    postOrderTraversal(root->right);
-    cout << root->data;
-}
-
-void inOrderTraversal(struct Node *root)
-{
-    if (root = NULL)
-    {
-        return;
-    }
-
-    inOrderTraversal(root->left);
+    postOrder(root->left);
+    postOrder(root->right);
     cout << root->data << " ";
-    inOrderTraversal(root->right);
 }
 
 int main()
@@ -61,6 +59,6 @@ int main()
     root->right->left = new Node(6);
     root->right->right = new Node(7);
 
-    preOrder(root);
+    inOrderTraversal(root);
     return 0;
 }

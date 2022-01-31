@@ -16,59 +16,76 @@ struct Node
     }
 };
 
-int searchFunction(int inOrder[], int start, int end, int curr)
+int searchInInOrder(int inOrder[], int start, int end, int curr)
 {
     for (int i = start; i <= end; i++)
     {
         if (inOrder[i] == curr)
         {
-
             return i;
         }
     }
+
+    // if nothing found return this
     return -1;
 }
 
-Node *buildTree(int preOrder[], int inOrder[], int start, int end)
-{
-    static int idx = 0;
+// creating a build tre function which returns root node of the binary tree
 
+Node *buildTree(int inOrder[], int preOrder[], int start, int end)
+{
+    // index variable to traverse through the preOrder
+    static int idx = 0;
+    // for the invalid condition if start > end
     if (start > end)
     {
         return NULL;
     }
-
+    // store the value of the element at idx in preOrder
     int curr = preOrder[idx];
+    // create a node using this curr
+    Node *node = new Node(curr);
+    // and increment idx
     idx++;
-    Node *root = new Node(curr);
-    int pos = searchFunction(inOrder, start, end, curr);
+    // now search this curr in inOrder and get it's position
+
+    int pos = searchInInOrder(inOrder, start, end, curr);
+    // if there's only one node in the tree
     if (start == end)
     {
-        return root;
+        return node;
     }
-    root->left = buildTree(preOrder, inOrder, start, pos - 1);
-    root->right = buildTree(preOrder, inOrder, pos + 1, end);
 
-    return root;
+    // with this position reCall the buildTree function for the left and right SubTree
+    // for the left subTre
+    node->left = buildTree(inOrder, preOrder, start, pos - 1);
+    // for the right subTree
+    node->right = buildTree(inOrder, preOrder, pos + 1, end);
+
+    return node;
 }
 
-void inOrderPrint(Node *root)
+// print inOrder function to check if the code is working properly or not
+void printInOrder(Node *root)
 {
+    // base condition if the root is null
     if (root == NULL)
     {
         return;
     }
-    inOrderPrint(root->left);
+    // LDR
+    printInOrder(root->left);
     cout << root->data << " ";
-    inOrderPrint(root->right);
+    printInOrder(root->right);
 }
 
 int main()
 {
-    int preOrder[] = {1, 2, 4, 3, 5};
     int inOrder[] = {4, 2, 1, 5, 3};
+    int preOrder[] = {1, 2, 4, 3, 5};
 
-    Node *root = buildTree(preOrder,inOrder,0,4);
-    inOrderPrint(root);
+    Node *root = buildTree(inOrder, preOrder, 0, 4);
+    printInOrder(root);
+
     return 0;
 }

@@ -7,7 +7,7 @@ class Stack
     queue<int> q1;
     queue<int> q2;
 
-    // constructor
+    // constructorf
     Stack()
     {
         N = 0;
@@ -39,6 +39,10 @@ class Stack
         }
         q1.pop();
     }
+
+
+    
+
 };
 
 int main()
