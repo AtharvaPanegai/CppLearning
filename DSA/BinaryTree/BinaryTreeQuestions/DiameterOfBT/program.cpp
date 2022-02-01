@@ -26,7 +26,7 @@ int calcHeight(Node *root)
     return max(calcHeight(root->left), calcHeight(root->right)) + 1;
 }
 
-// O(n2)
+// O(n^2)
 
 int calculateDiameter(Node *root)
 {
@@ -34,7 +34,6 @@ int calculateDiameter(Node *root)
     {
         return 0;
     }
-
     int lHeight = calcHeight(root->left);
     int rHeight = calcHeight(root->right);
 
@@ -44,6 +43,24 @@ int calculateDiameter(Node *root)
     int rDiameter = calculateDiameter(root->right);
 
     return max(currDiameter, max(lDiameter, rDiameter));
+}
+
+int calcDiameter(Node *root, int* height)
+{
+    if (root == NULL)
+    {
+        *height = 0;
+        return 0;
+    }
+    int lh = 0, rh = 0;
+    int ld = calcDiameter(root->left, &lh);
+    int rd = calcDiameter(root->right, &rh);
+
+    int currDiameter = lh + rh + 1;
+
+    *height = max(lh, rh) + 1;
+
+    return max(currDiameter, max(ld, rd));
 }
 
 int main()
@@ -56,8 +73,8 @@ int main()
     root->right = new Node(3);
     root->right->left = new Node(6);
     root->right->right = new Node(6);
-
-    cout<<calculateDiameter(root);
+    int *height=0;
+    cout << calcDiameter(root,height);
 
     return 0;
 }
