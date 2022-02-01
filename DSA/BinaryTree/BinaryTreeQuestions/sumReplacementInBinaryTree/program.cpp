@@ -4,8 +4,8 @@ using namespace std;
 struct Node
 {
     int data;
-    struct Node *left;
-    struct Node *right;
+    Node *left;
+    Node *right;
 
     // constructor
     Node(int val)
@@ -16,34 +16,34 @@ struct Node
     }
 };
 
-void sumReplace(Node *root)
+void sumReplacement(Node *root)
 {
-    if(root==NULL){
+    if (root == NULL)
+    {
         return;
     }
-    // calc left and then right
-    sumReplace(root->left);
-    sumReplace(root->right);
+    sumReplacement(root->left);
+    sumReplacement(root->right);
 
-    if (root->left)
+    if (root->left != NULL)
     {
         root->data += root->left->data;
     }
-    if (root->right)
+    if (root->right != NULL)
     {
         root->data += root->right->data;
     }
 }
 
-void preOrder(Node *root)
+void printPreOrder(Node *root)
 {
     if (root == NULL)
     {
         return;
     }
     cout << root->data << " ";
-    preOrder(root->left);
-    preOrder(root->right);
+    printPreOrder(root->left);
+    printPreOrder(root->right);
 }
 
 int main()
@@ -55,9 +55,13 @@ int main()
     root->right = new Node(3);
     root->right->left = new Node(6);
     root->right->right = new Node(7);
-    preOrder(root);
-    sumReplace(root);
-    cout << "After Sum Replacement\n";
-    preOrder(root);
+    cout << "Before Sum Replacement : "
+         << "\n";
+    printPreOrder(root);
+    cout << "\nAfter Sum Replacement : "
+         << "\n";
+    sumReplacement(root);
+    printPreOrder(root);
+
     return 0;
 }
