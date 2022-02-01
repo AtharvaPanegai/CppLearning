@@ -1,12 +1,11 @@
 #include "bits/stdc++.h"
 using namespace std;
 
-// Binary Tree building
 struct Node
 {
     int data;
-    struct Node *left;
-    struct Node *right;
+    Node *left;
+    Node *right;
 
     // constructor
     Node(int val)
@@ -17,18 +16,23 @@ struct Node
     }
 };
 
-void printLevelOrderTraversal(Node *root)
+void LevelOrderTraversal(Node *root)
 {
     queue<Node *> q;
+    // initially push the root along with the NULL in the queue
     q.push(root);
     q.push(NULL);
 
+    // now till the queue becomes empty
     while (!q.empty())
     {
+        // store the front of queue in the node to check for its left and right subTree
         Node *node = q.front();
+        // pop it from the queue
         q.pop();
         if (node != NULL)
         {
+            // print it's data and check for the left and right subTree
             cout << node->data << " ";
             if (node->left)
             {
@@ -36,6 +40,7 @@ void printLevelOrderTraversal(Node *root)
             }
             if (node->right)
             {
+
                 q.push(node->right);
             }
         }
@@ -56,6 +61,7 @@ int main()
     root->right->left = new Node(6);
     root->right->right = new Node(7);
 
-    printLevelOrderTraversal(root);
+    LevelOrderTraversal(root);
+
     return 0;
 }
