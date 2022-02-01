@@ -4,9 +4,10 @@ using namespace std;
 struct Node
 {
     int data;
-    struct Node *left;
-    struct Node *right;
+    Node *left;
+    Node *right;
 
+    // constructor
     Node(int val)
     {
         data = val;
@@ -15,30 +16,30 @@ struct Node
     }
 };
 
-// Time Complexity of function = O(n)
-int calculateHeight(Node *root)
+// Time Complexity => O(n)
+
+int height(Node *root)
 {
     if (root == NULL)
     {
         return 0;
     }
-    int leftHeight = calculateHeight(root->left);
-    int rightHeigh = calculateHeight(root->right);
 
-    return max(leftHeight, rightHeigh) + 1;
+    int rHeight = height(root->right);
+    int lHeight = height(root->left);
+
+    return max(lHeight, rHeight) + 1;
 }
 
 int main()
 {
-    struct Node *root = new Node(1);
+    Node *root = new Node(1);
     root->left = new Node(2);
+    root->right = new Node(3);
     root->left->left = new Node(4);
     root->left->right = new Node(5);
-    root->right = new Node(3);
-    root->right->left = new Node(6);
-    root->right->right = new Node(7);
+    root->right->right = new Node(6);
 
-    cout<<calculateHeight(root);
-
+    cout << height(root);
     return 0;
 }
